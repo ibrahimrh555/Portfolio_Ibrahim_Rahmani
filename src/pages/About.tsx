@@ -1,46 +1,61 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Code, Palette, Zap, Award, BookOpen, Heart } from "lucide-react";
-import workspaceImg from "@/assets/workspace.jpg";
+import { Code, Server, Cpu, Award, Users, Search, Database, Cloud } from "lucide-react";
 import { motion } from "framer-motion";
 
 const About = () => {
+  // Vos images (inchangées)
   const images = [
-  "public/image2.jpg",
-  "public/image1.jpeg",
-  "public/image3.jpg",
-  "public/image4.jpg",
-  "public/image5.jpg",
-  "public/image6.jpg",
-  "public/image7.jpg",
-  "public/image8.jpg",
-  "public/image9.jpg",
-];
+    "public/image2.jpg",
+    "public/image1.jpeg",
+    "public/image3.jpg",
+    "public/image4.jpg",
+    "public/image5.jpg",
+    "public/image6.jpg",
+    "public/image7.jpg",
+    "public/image8.jpg",
+    "public/image9.jpg",
+  ];
+
+  // Compétences basées sur la section "COMPÉTENCES TECHNIQUES" du CV
   const skills = [
     {
       icon: Code,
-      title: "Développement",
-      description: "Expert en React, TypeScript, Node.js et technologies modernes du web",
-      tags: ["React", "TypeScript", "Node.js", "Next.js"],
+      title: "Full Stack Web",
+      description: "Conception d'applications performantes avec une maîtrise des environnements Java et JS.",
+      tags: ["Java/JEE", "Spring Boot", "React.js", "Laravel", "Django"],
     },
     {
-      icon: Palette,
-      title: "Design",
-      description: "Création d'interfaces modernes, responsive et centrées sur l'utilisateur",
-      tags: ["UI/UX", "Figma", "Tailwind CSS", "Design Systems"],
+      icon: Cpu,
+      title: "IoT & Embarqué",
+      description: "Intégration Hardware-Software et développement de systèmes connectés temps réel.",
+      tags: ["C++", "ESP32", "Capteurs", "Arduino"],
     },
     {
-      icon: Zap,
-      title: "Performance",
-      description: "Optimisation avancée et respect des meilleures pratiques de développement",
-      tags: ["Optimization", "SEO", "Accessibility", "Testing"],
+      icon: Database,
+      title: "Data & DevOps",
+      description: "Gestion de bases de données et déploiement cloud via des architectures modernes.",
+      tags: ["MySQL/Oracle", "Docker", "AWS", "Git/GitHub"],
     },
   ];
 
+  // Valeurs basées sur les "SOFT SKILLS" et le "RÉSUMÉ PROFESSIONNEL"
   const values = [
-    { icon: Award, title: "Excellence", desc: "Code de qualité et attention aux détails" },
-    { icon: BookOpen, title: "Apprentissage", desc: "Veille technologique constante" },
-    { icon: Heart, title: "Passion", desc: "Amour du craft et de l'innovation" },
+    { 
+      icon: Search, 
+      title: "Rigueur Analytique", 
+      desc: "Approche structurée pour concevoir des solutions performantes et sécurisées." 
+    },
+    { 
+      icon: Users, 
+      title: "Leadership & Agile", 
+      desc: "Expérience en gestion d'équipe (Club JLM) et méthodologie Scrum." 
+    },
+    { 
+      icon: Award, 
+      title: "Innovation", 
+      desc: "Créativité technique appliquée aux projets IoT et digitaux." 
+    },
   ];
 
   return (
@@ -53,40 +68,46 @@ const About = () => {
             {/* Hero Section */}
             <div className="mb-16">
               <h1 className="font-display text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
-                À Propos
+                À Propos de moi
               </h1>
               
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div className="space-y-6 text-lg text-muted-foreground animate-slide-up">
                   <p className="leading-relaxed">
-                    Développeur <span className="text-primary font-semibold">passionné</span> par la création d'expériences web exceptionnelles.
-                    Je combine design moderne et code propre pour donner vie à vos projets les plus ambitieux.
+                    Je suis <span className="text-foreground font-semibold">Ibrahim Rahmani</span>, 
+                    Élève Ingénieur en Génie Informatique à l'<span className="text-primary font-semibold">ENSA Khouribga</span>.
                   </p>
                   
                   <p className="leading-relaxed">
-                    Avec plus de <span className="text-foreground font-semibold">5 années d'expérience</span> dans le développement web, 
-                    je me spécialise dans la création d'applications React performantes, d'interfaces utilisateur élégantes 
-                    et de solutions backend robustes.
+                    Passionné par le développement logiciel et l'Internet des Objets (IoT), je combine 
+                    <span className="text-foreground font-semibold"> rigueur analytique</span> et créativité technique. 
+                    Fort d'une maîtrise des écosystèmes <span className="text-foreground">Spring Boot</span> et <span className="text-foreground">React</span>, 
+                    je conçois des solutions innovantes, allant de la gestion de cabinets médicaux aux systèmes de détection de fuites d'eau connectés.
                   </p>
 
-                  <p className="leading-relaxed">
-                    Mon approche privilégie la <span className="text-foreground font-semibold">qualité</span>, 
-                    la <span className="text-foreground font-semibold">maintenabilité</span> et 
-                    l'<span className="text-foreground font-semibold">expérience utilisateur</span>.
+                  <p className="leading-relaxed border-l-4 border-primary pl-4 bg-primary/5 py-2 rounded-r-lg">
+                    Actuellement à la recherche d'un <span className="text-foreground font-semibold">stage PFA (2 à 3 mois)</span> pour 
+                    contribuer à des projets techniques ambitieux et renforcer mon expertise en ingénierie logicielle.
                   </p>
                 </div>
 
-                <div className="relative animate-fade-in" style={{ animationDelay: "0.2s" }}>
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-2xl" />
-                  <img 
-                    src={"public/2.png"} 
-                    alt="Workspace de développeur"
-                    className="relative rounded-3xl shadow-2xl border border-border/50 hover:scale-105 transition-transform duration-500"
-                  />
+                <div className="relative animate-fade-in flex justify-center items-center" style={{ animationDelay: "0.2s" }}>
+                  {/* Cercles d'animation en arrière plan */}
+                  <div className="absolute w-[110%] h-[110%] border border-primary/30 rounded-full animate-pulse" />
+                  <div className="absolute w-[120%] h-[120%] border border-primary/10 rounded-full" />
+                  
+                  <div className="relative w-80 h-80 rounded-full overflow-hidden border-4 border-background shadow-2xl ring-4 ring-primary/20">
+                    <img 
+                      src="public/2.png" 
+                      alt="Ibrahim Rahmani Workspace"
+                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
 
+            {/* Gallery Section */}
             <div className="relative flex flex-wrap justify-center gap-6 mt-16 mb-10 max-w-6xl px-4">
               {images.map((src, index) => (
                 <motion.div
@@ -102,16 +123,17 @@ const About = () => {
                 >
                   <img
                     src={src}
-                    alt={`photo-${index}`}
+                    alt={`Projet ou activité ${index + 1}`}
                     className="w-full h-full object-cover"
                   />
                 </motion.div>
               ))}
             </div>
             <br />
-            {/* Values */}
+            
+            {/* Values / Soft Skills Section */}
             <div className="mb-16">
-              <h2 className="font-display text-3xl font-bold mb-8 text-center">Mes Valeurs</h2>
+              <h2 className="font-display text-3xl font-bold mb-8 text-center">Mes Valeurs & Soft Skills</h2>
               <div className="grid md:grid-cols-3 gap-6">
                 {values.map((value, index) => (
                   <div
@@ -127,9 +149,9 @@ const About = () => {
               </div>
             </div>
 
-            {/* Skills */}
+            {/* Technical Skills Section */}
             <div>
-              <h2 className="font-display text-3xl font-bold mb-8 text-center">Expertise</h2>
+              <h2 className="font-display text-3xl font-bold mb-8 text-center">Expertise Technique</h2>
               <div className="grid md:grid-cols-3 gap-8">
                 {skills.map((skill, index) => (
                   <div
