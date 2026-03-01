@@ -5,60 +5,34 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 const Projects = () => {
+  // Données extraites directement du CV d'Ibrahim RAHMANI
   const projects = [
     {
-      title: "E-Commerce Platform",
-      description: "This project involves creating an e-commerce application dedicated to selling clothing, developed with Laravel, HTML, CSS, and MYSQL. It allows sellers to manage their products and orders, and users to browse, purchase, and track their purchases online.",
-      image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop",
-      tags: ["HTML", "CSS", "PHP", "Laravel", "MYSQL"],
-      github: "https://github.com/ibrahimrh555/E-Commerce_Platform",
+      title: "Solution IoT & Dashboard Anti-Gaspillage d'Eau",
+      description: "Système connecté (ESP32) pour la collecte et l'analyse en temps réel des données de consommation d'eau domestique. Création d'un tableau de bord interactif avec algorithmes de détection d'anomalies (fuites) pour une meilleure gestion des ressources hydriques.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop", // Image de dashboard/data
+      tags: ["Python", "Django", "React", "MySQL", "C++", "ESP32"],
+      github: "https://github.com/ibrahimrh555/Suivi_de_Consommation_d_Eau",
       demo: "",
       color: "from-blue-500/20 to-cyan-500/20 border-blue-500/30"
     },
     {
-      title: "Smart Home Water Consumption Monitoring System",
-      description: "A smart, scalable system designed to monitor domestic water consumption in real time. Its goal is to raise awareness among users about their daily usage and encourage water savings based on reliable data.",
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop",
-      tags: ["React.ts", "Taillwind", "Django", "MYSQL", "ESP32"],
-      github: "https://github.com",
-      demo: "https://demo.com",
+      title: "Application de Gestion de Cabinet Médical",
+      description: "Plateforme web complète (Full Stack) pour digitaliser les processus administratifs (Rendez-vous, Dossiers patients). Implémentation d'une architecture sécurisée avec gestion des rôles (Admin/Médecin/Secrétaire) et génération automatique d'ordonnances.",
+      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop", // Image médicale/tech
+      tags: ["Java JEE", "Spring Boot", "React.js", "MySQL"],
+      github: "https://github.com/ibrahimrh555/Optimisation_Processus_Administratifs_Cabinet_Medical",
+      demo: "",
       color: "from-purple-500/20 to-pink-500/20 border-purple-500/30"
     },
     {
-      title: "Social Media Dashboard",
-      description: "Tableau de bord analytique pour médias sociaux avec visualisation de données, planification de posts et statistiques en temps réel.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-      tags: ["React", "D3.js", "API", "Analytics"],
-      github: "https://github.com",
-      demo: "https://demo.com",
+      title: "Plateforme E-commerce de Prêt-à-Porter",
+      description: "Conception et déploiement d'une marketplace incluant un back-office vendeur et une interface client fluide. Modélisation de la base de données relationnelle et respect strict de l'architecture MVC pour faciliter la maintenance du code.",
+      image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop", // Image E-commerce existante
+      tags: ["PHP", "Laravel", "JavaScript", "SQL"],
+      github: "https://github.com/ibrahimrh555/Plateforme_E-commerce_Pret_a_Porter",
+      demo: "",
       color: "from-green-500/20 to-emerald-500/20 border-green-500/30"
-    },
-    {
-      title: "Portfolio Generator",
-      description: "Outil de création de portfolios personnalisés avec éditeur drag-and-drop, thèmes personnalisables et export optimisé pour le web.",
-      image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=600&fit=crop",
-      tags: ["Vue.js", "Node.js", "MongoDB", "AI"],
-      github: "https://github.com",
-      demo: "https://demo.com",
-      color: "from-orange-500/20 to-red-500/20 border-orange-500/30"
-    },
-    {
-      title: "AI Chat Assistant",
-      description: "Assistant de chat intelligent avec IA pour le support client, capable de comprendre le contexte et de fournir des réponses personnalisées.",
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
-      tags: ["OpenAI", "Python", "FastAPI", "WebSocket"],
-      github: "https://github.com",
-      demo: "https://demo.com",
-      color: "from-violet-500/20 to-indigo-500/20 border-violet-500/30"
-    },
-    {
-      title: "Fitness Tracker",
-      description: "Application mobile-first de suivi fitness avec plans d'entraînement personnalisés, tracking nutritionnel et intégration wearables.",
-      image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&h=600&fit=crop",
-      tags: ["React Native", "Firebase", "Health API", "Charts"],
-      github: "https://github.com",
-      demo: "https://demo.com",
-      color: "from-yellow-500/20 to-orange-500/20 border-yellow-500/30"
     }
   ];
 
@@ -71,13 +45,12 @@ const Projects = () => {
           <div className="max-w-7xl mx-auto">
             {/* Header */}
             <div className="mb-16 text-center">
-                
               <h1 className="font-display text-5xl md:text-7xl font-bold mb-6 animate-fade-in bg-gradient-to-br from-foreground via-foreground to-muted-foreground bg-clip-text text-transparent">
-                My Projects
+                Mes Projets
               </h1>
               
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto animate-slide-up">
-                Discover my recent achievements, from modern web applications to innovative solutions
+                Découvrez mes récentes réalisations, alliant développement Full Stack, ingénierie logicielle et solutions IoT.
               </p>
             </div>
 
@@ -101,12 +74,12 @@ const Projects = () => {
                     </div>
 
                     {/* Content */}
-                    <div className="p-6 space-y-4">
+                    <div className="flex flex-col h-[calc(100%-12rem)] p-6 space-y-4">
                       <h3 className="font-display text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
                         {project.title}
                       </h3>
                       
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-sm leading-relaxed flex-grow">
                         {project.description}
                       </p>
 
@@ -124,16 +97,17 @@ const Projects = () => {
                       </div>
 
                       {/* Actions */}
-                      <div className="flex gap-3 pt-4">
+                      <div className="flex gap-3 pt-4 mt-auto">
                         <Button
                           variant="default"
                           size="sm"
                           className="flex-1 group/btn"
                           asChild
+                          disabled={!project.demo}
                         >
-                          <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                          <a href={project.demo || "#"} target={project.demo ? "_blank" : "_self"} rel="noopener noreferrer">
                             <ExternalLink className="h-4 w-4 mr-2 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-                            Demo
+                            Démo
                           </a>
                         </Button>
                         <Button
@@ -141,8 +115,9 @@ const Projects = () => {
                           size="sm"
                           className="flex-1"
                           asChild
+                          disabled={!project.github}
                         >
-                          <a href={project.github} target="_blank" rel="noopener noreferrer">
+                          <a href={project.github || "#"} target={project.github ? "_blank" : "_self"} rel="noopener noreferrer">
                             <Github className="h-4 w-4 mr-2" />
                             Code
                           </a>
@@ -153,7 +128,6 @@ const Projects = () => {
                 </div>
               ))}
             </div>
-
             
           </div>
         </div>

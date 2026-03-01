@@ -31,7 +31,7 @@ const Navigation = () => {
                
               className="h-12 w-18   transition-transform"
             />
-            Ibrahim
+            Ißrahim
             </Link>
 
           {/* Desktop Menu */}

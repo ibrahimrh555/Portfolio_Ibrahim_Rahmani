@@ -104,7 +104,7 @@ const Index = () => {
             </Link>
             </Button>
             <Button asChild variant="ghost" size="lg" className="h-12 px-8 rounded-full border border-white/10 hover:bg-white/5 transition-transform hover:scale-105 active:scale-95">
-            <a href="public/cv_ibra.pdf" download="CV_Ibrahim.pdf" className="flex items-center">
+            <a href="public/CV Eng.pdf" download="CV_Ibrahim.pdf" className="flex items-center">
               <Download className="mr-2 h-4 w-4 text-primary" />
               Télécharger mon CV
             </a>
@@ -143,8 +143,8 @@ const Index = () => {
           className="grid md:grid-cols-2 gap-8"
           >
           {[
-            { title: "E-Commerce OS", category: "Next.js • Tailwind • Stripe", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" },
-            { title: "SaaS Dashboard", category: "React • TypeScript • Supabase", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" }
+            { title: "Plateforme E-commerce", category: "PHP • Laravel • JavaScript • SQL", image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop" },
+            { title: "Solution IoT", category: "React • Python • Django • MySQL • C++ • ESP32", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop" }
           ].map((project, i) => (
             <motion.div 
             key={i}
@@ -321,13 +321,13 @@ const Index = () => {
               <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 shrink-0 group-hover:border-primary transition-colors">
               <Mail className="w-4 h-4 text-primary" />
               </div>
-              <span>contact@votre-nom.com</span>
+              <span>rahmaniibrahim042@gmail.com</span>
             </div>
             <div className="flex items-center gap-3 text-white/60 text-sm">
               <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 shrink-0">
               <MapPin className="w-4 h-4 text-primary" />
               </div>
-              <span>France • Remote</span>
+              <span>Maroc • Remote</span>
             </div>
             </div>
           </motion.div>
