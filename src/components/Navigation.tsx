@@ -27,9 +27,10 @@ const Navigation = () => {
             className="flex items-center gap-2 font-display text-4xl font-bold text-primary hover:text-accent transition-colors group"
             >
             <img 
-              src="public/i (1).png" 
+              src={`${import.meta.env.BASE_URL}i%20(1).png`} 
                
-              className="h-12 w-18   transition-transform"
+              alt="Logo Ibrahim Rahmani"
+              className="h-12 w-auto transition-transform"
             />
             Ißrahim
             </Link>
