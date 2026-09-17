@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Code2, Palette, Database, Star, Quote, ExternalLink, Github, Download, Send, Mail, MapPin } from "lucide-react";
+import { ArrowRight, Smartphone, Server, Cpu, Star, Quote, ExternalLink, Download, Mail, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
@@ -76,7 +76,7 @@ const Index = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-tight"
           >
-            Bâtir le futur du web avec <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">élégance.</span>
+            Concevoir des solutions <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">web, mobiles et connectées.</span>
           </motion.h1>
           
           <motion.p 
@@ -85,10 +85,10 @@ const Index = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed"
           >
-            Développeur Fullstack spécialisé dans la création d'expériences numériques 
-            <span className="text-foreground"> immersives</span>, 
-            <span className="text-foreground"> performantes</span> et 
-            <span className="text-foreground"> scalables</span>.
+            Élève ingénieur en Génie Informatique et développeur Full Stack, spécialisé en 
+            <span className="text-foreground"> applications web et mobiles</span>, 
+            <span className="text-foreground"> APIs backend</span> et 
+            <span className="text-foreground"> solutions IoT</span>.
           </motion.p>
 
           <motion.div 
@@ -195,7 +195,7 @@ const Index = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-muted-foreground text-lg max-w-2xl mx-auto"
           >
-            J'accompagne les entreprises dans leur transformation digitale avec une stack moderne.
+            Je conçois des applications complètes, de l'interface utilisateur jusqu'aux APIs, aux données et aux objets connectés.
           </motion.p>
           </div>
 
@@ -207,9 +207,9 @@ const Index = () => {
           className="grid md:grid-cols-3 gap-6"
           >
           {[
-            { icon: Code2, title: "Développement Frontend", desc: "Interfaces ultra-rapides et réactives avec React et Next.js." },
-            { icon: Database, title: "Architecture Backend", desc: "APIs robustes et bases de données scalables (Node.js/PostgreSQL)." },
-            { icon: Palette, title: "UI/UX Design", desc: "Prototypes interactifs et designs centrés sur l'utilisateur." }
+            { icon: Smartphone, title: "Web & Mobile", desc: "Interfaces responsives et applications mobiles avec React, React Native, TypeScript et Expo." },
+            { icon: Server, title: "Backend & APIs", desc: "APIs REST et services métier avec Spring Boot, Django REST, Hono et tRPC." },
+            { icon: Cpu, title: "IoT & Données", desc: "Solutions connectées avec ESP32, capteurs, MySQL et tableaux de bord temps réel." }
           ].map((s, i) => (
             <motion.div key={i} variants={fadeInUp}>
             <Card className="p-8 border-none bg-background shadow-sm hover:shadow-md transition-all hover:-translate-y-2 group">
@@ -244,7 +244,7 @@ const Index = () => {
           >
           {[...Array(2)].map((_, index) => (
             <React.Fragment key={index}>
-            {["React", "TypeScript", "Tailwind", "JAVA", "Spring Boot", "Python", "Django", "MySQL", "Docker"].map((tech) => (
+            {["React", "React Native", "TypeScript", "Expo", "Java", "Spring Boot", "Python", "Django REST", "Hono", "tRPC", "MySQL", "Docker"].map((tech) => (
               <span 
               key={`${tech}-${index}`} 
               className="text-2xl md:text-4xl font-bold font-display tracking-tighter text-muted-foreground/30 hover:text-primary transition-colors cursor-default uppercase"
