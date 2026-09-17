@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Code, Server, Cpu, Award, Users, Search, Database, Cloud } from "lucide-react";
+import { Code, Server, Cpu, Award, Users, Search, Database, Smartphone } from "lucide-react";
 import { motion } from "framer-motion";
 
 const About = () => {
@@ -15,25 +15,30 @@ const About = () => {
     `${baseUrl}14.jpg`,
   ];
 
-  // Compétences basées sur la section "COMPÉTENCES TECHNIQUES" du CV
   const skills = [
     {
-      icon: Code,
-      title: "Full Stack Web",
-      description: "Conception d'applications performantes avec une maîtrise des environnements Java et JS.",
-      tags: ["Java/JEE", "Spring Boot", "React.js", "Laravel", "Django"],
+      icon: Smartphone,
+      title: "Frontend & Mobile",
+      description: "Création d'interfaces web et d'applications mobiles modernes, responsives et accessibles.",
+      tags: ["React.js", "React Native", "TypeScript", "Expo", "Tailwind CSS"],
     },
     {
-      icon: Cpu,
-      title: "IoT & Embarqué",
-      description: "Intégration Hardware-Software et développement de systèmes connectés temps réel.",
-      tags: ["C++", "ESP32", "Capteurs", "Arduino"],
+      icon: Server,
+      title: "Backend & APIs",
+      description: "Conception d'APIs REST et de services backend fiables avec des architectures modulaires.",
+      tags: ["Java", "Spring Boot", "Python", "Django REST", "Hono", "tRPC"],
     },
     {
       icon: Database,
       title: "Data & DevOps",
-      description: "Gestion de bases de données et déploiement cloud via des architectures modernes.",
-      tags: ["MySQL/Oracle", "Docker", "AWS", "Git/GitHub"],
+      description: "Gestion des données, automatisation CI/CD et déploiement d'applications modernes.",
+      tags: ["MySQL", "SQLite/Turso", "Docker", "Git/GitHub", "GitHub Actions", "Cloudflare Workers"],
+    },
+    {
+      icon: Cpu,
+      title: "IoT & Systèmes embarqués",
+      description: "Intégration matériel-logiciel pour la collecte et le suivi de données en temps réel.",
+      tags: ["C++", "ESP32", "YF-S201", "Arduino", "Wi-Fi"],
     },
   ];
 
@@ -73,19 +78,20 @@ const About = () => {
                 <div className="space-y-6 text-lg text-muted-foreground animate-slide-up">
                   <p className="leading-relaxed">
                     Je suis <span className="text-foreground font-semibold">Ibrahim Rahmani</span>, 
-                    Élève Ingénieur en Génie Informatique à l'<span className="text-primary font-semibold">ENSA Khouribga</span>.
+                    Élève ingénieur en Génie Informatique, option TALIS, à l'<span className="text-primary font-semibold">ENSA Khouribga</span>.
                   </p>
                   
                   <p className="leading-relaxed">
-                    Passionné par le développement logiciel et l'Internet des Objets (IoT), je combine 
-                    <span className="text-foreground font-semibold"> rigueur analytique</span> et créativité technique. 
-                    Fort d'une maîtrise des écosystèmes <span className="text-foreground">Spring Boot</span> et <span className="text-foreground">React</span>, 
-                    je conçois des solutions innovantes, allant de la gestion de cabinets médicaux aux systèmes de détection de fuites d'eau connectés.
+                    Spécialisé en développement <span className="text-foreground font-semibold">Full Stack web et mobile</span>, 
+                    je travaille avec React, React Native, TypeScript, Spring Boot, Django, Hono et tRPC. 
+                    Mes expériences couvrent les applications mobiles, les APIs backend, les plateformes métier 
+                    et les systèmes IoT connectés avec ESP32.
                   </p>
 
                   <p className="leading-relaxed border-l-4 border-primary pl-4 bg-primary/5 py-2 rounded-r-lg">
-                    Actuellement à la recherche d'un <span className="text-foreground font-semibold">stage PFA (2 à 3 mois)</span> pour 
-                    contribuer à des projets techniques ambitieux et renforcer mon expertise en ingénierie logicielle.
+                    Après avoir réalisé mon PFA sur l'application mobile <span className="text-foreground font-semibold">10in</span>, 
+                    je recherche un <span className="text-foreground font-semibold">stage PFE 2026/2027</span> pour contribuer 
+                    à des produits web ou mobiles ambitieux et approfondir mon expertise en ingénierie logicielle.
                   </p>
                 </div>
 
@@ -150,7 +156,7 @@ const About = () => {
             {/* Technical Skills Section */}
             <div>
               <h2 className="font-display text-3xl font-bold mb-8 text-center">Expertise Technique</h2>
-              <div className="grid md:grid-cols-3 gap-8">
+              <div className="grid md:grid-cols-2 gap-8">
                 {skills.map((skill, index) => (
                   <div
                     key={skill.title}
