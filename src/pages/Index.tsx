@@ -104,7 +104,7 @@ const Index = () => {
             </Link>
             </Button>
             <Button asChild variant="ghost" size="lg" className="h-12 px-8 rounded-full border border-white/10 hover:bg-white/5 transition-transform hover:scale-105 active:scale-95">
-            <a href="public/CV Eng.pdf" download="CV_Ibrahim.pdf" className="flex items-center">
+            <a href={`${import.meta.env.BASE_URL}CV%20Eng.pdf`} download="CV_Ibrahim.pdf" className="flex items-center">
               <Download className="mr-2 h-4 w-4 text-primary" />
               Télécharger mon CV
             </a>
