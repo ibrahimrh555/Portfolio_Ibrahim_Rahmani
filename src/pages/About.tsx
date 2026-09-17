@@ -4,17 +4,15 @@ import { Code, Server, Cpu, Award, Users, Search, Database, Cloud } from "lucide
 import { motion } from "framer-motion";
 
 const About = () => {
-  // Vos images (inchangées)
+  const baseUrl = import.meta.env.BASE_URL;
+
   const images = [
-    "public/image2.jpg",
-    "public/image1.jpeg",
-    "public/image3.jpg",
-    "public/image4.jpg",
-    "public/image5.jpg",
-    "public/image6.jpg",
-    "public/image7.jpg",
-    "public/image8.jpg",
-    "public/image9.jpg",
+    `${baseUrl}image1.jpeg`,
+    `${baseUrl}image3.jpg`,
+    `${baseUrl}image6.jpg`,
+    `${baseUrl}12.jpg`,
+    `${baseUrl}13.jpg`,
+    `${baseUrl}14.jpg`,
   ];
 
   // Compétences basées sur la section "COMPÉTENCES TECHNIQUES" du CV
@@ -98,7 +96,7 @@ const About = () => {
                   
                   <div className="relative w-80 h-80 rounded-full overflow-hidden border-4 border-background shadow-2xl ring-4 ring-primary/20">
                     <img 
-                      src="public/2.png" 
+                      src={`${baseUrl}image1.jpeg`} 
                       alt="Ibrahim Rahmani Workspace"
                       className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
                     />
