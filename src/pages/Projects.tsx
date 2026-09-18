@@ -6,54 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { getProjects, type Project } from "@/lib/api";
 
-const fallbackProjects: Project[] = [
-  {
-    id: 1,
-    title: "Solution IoT & Dashboard Anti-Gaspillage d'Eau",
-    slug: "solution-iot-eau",
-    short_description: "Système connecté ESP32 pour mesurer la consommation d'eau en temps réel, détecter les anomalies et afficher des alertes sur un tableau de bord.",
-    description: "",
-    image_url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-    technologies: ["Python", "Django", "React", "MySQL", "C++", "ESP32"],
-    github_url: "https://github.com/ibrahimrh555/Suivi_de_Consommation_d_Eau",
-    demo_url: "",
-    featured: true,
-    order: 1,
-    created_at: "",
-    updated_at: "",
-  },
-  {
-    id: 2,
-    title: "Application de Gestion de Cabinet Médical",
-    slug: "cabinet-medical",
-    short_description: "Plateforme Full Stack pour gérer les rendez-vous, dossiers patients, ordonnances et rôles Administrateur, Médecin et Secrétaire.",
-    description: "",
-    image_url: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop",
-    technologies: ["Java", "Spring Boot", "React.js", "MySQL"],
-    github_url: "https://github.com/ibrahimrh555/Optimisation_Processus_Administratifs_Cabinet_Medical",
-    demo_url: "",
-    featured: true,
-    order: 2,
-    created_at: "",
-    updated_at: "",
-  },
-  {
-    id: 3,
-    title: "Plateforme E-commerce de Prêt-à-Porter",
-    slug: "ecommerce-pret-a-porter",
-    short_description: "Marketplace avec back-office vendeur, interface client et base de données relationnelle organisée selon une architecture MVC.",
-    description: "",
-    image_url: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop",
-    technologies: ["PHP", "Laravel", "JavaScript", "SQL"],
-    github_url: "https://github.com/ibrahimrh555/Plateforme_E-commerce_Pret_a_Porter",
-    demo_url: "",
-    featured: false,
-    order: 3,
-    created_at: "",
-    updated_at: "",
-  },
-];
-
 const colors = [
   "from-blue-500/20 to-cyan-500/20 border-blue-500/30",
   "from-purple-500/20 to-pink-500/20 border-purple-500/30",
@@ -61,17 +13,22 @@ const colors = [
 ];
 
 const Projects = () => {
-  const [projects, setProjects] = useState<Project[]>(fallbackProjects);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
     getProjects(controller.signal)
       .then((data) => {
-        if (data.length > 0) setProjects(data);
+        setProjects(data);
+        setError(false);
       })
-      .catch(() => {
-        // Keep the local portfolio content while the API is unavailable.
-      });
+      .catch((requestError) => {
+        if (requestError instanceof DOMException && requestError.name === "AbortError") return;
+        setError(true);
+      })
+      .finally(() => setLoading(false));
     return () => controller.abort();
   }, []);
 
@@ -90,6 +47,21 @@ const Projects = () => {
               </p>
             </div>
 
+            {loading && (
+              <p className="text-center text-muted-foreground">Chargement des projets...</p>
+            )}
+
+            {error && !loading && (
+              <p className="text-center text-destructive">
+                Impossible de charger les projets. Veuillez réessayer plus tard.
+              </p>
+            )}
+
+            {!loading && !error && projects.length === 0 && (
+              <p className="text-center text-muted-foreground">Aucun projet publié.</p>
+            )}
+
+            {!loading && !error && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects.map((project, index) => (
                 <article
@@ -144,6 +116,7 @@ const Projects = () => {
                 </article>
               ))}
             </div>
+            )}
           </div>
         </div>
       </main>
