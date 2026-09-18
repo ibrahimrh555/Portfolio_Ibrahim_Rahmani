@@ -61,17 +61,22 @@ const colors = [
 ];
 
 const Projects = () => {
-  const [projects, setProjects] = useState<Project[]>(fallbackProjects);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
     getProjects(controller.signal)
       .then((data) => {
-        if (data.length > 0) setProjects(data);
+        setProjects(data);
+        setError(false);
       })
-      .catch(() => {
-        // Keep the local portfolio content while the API is unavailable.
-      });
+      .catch((requestError) => {
+        if (requestError instanceof DOMException && requestError.name === "AbortError") return;
+        setError(true);
+      })
+      .finally(() => setLoading(false));
     return () => controller.abort();
   }, []);
 
@@ -90,6 +95,21 @@ const Projects = () => {
               </p>
             </div>
 
+            {loading && (
+              <p className="text-center text-muted-foreground">Chargement des projets...</p>
+            )}
+
+            {error && !loading && (
+              <p className="text-center text-destructive">
+                Impossible de charger les projets. Veuillez réessayer plus tard.
+              </p>
+            )}
+
+            {!loading && !error && projects.length === 0 && (
+              <p className="text-center text-muted-foreground">Aucun projet publié.</p>
+            )}
+
+            {!loading && !error && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects.map((project, index) => (
                 <article
@@ -144,6 +164,7 @@ const Projects = () => {
                 </article>
               ))}
             </div>
+            )}
           </div>
         </div>
       </main>
