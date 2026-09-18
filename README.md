@@ -47,7 +47,7 @@ Portfolio_Ibrahim_Rahmani/
 | Partie | Hébergement | Prix |
 |---|---|---:|
 | Frontend React | GitHub Pages | 0 $ |
-| Backend Django | Render Web Service Free | 0 $ |
+| Backend Django | Vercel Hobby | 0 $ |
 | PostgreSQL | Neon Free | 0 $ |
 
 Les instructions complètes de configuration sont disponibles dans [`backend/README.md`](backend/README.md).
@@ -59,7 +59,7 @@ Les instructions complètes de configuration sont disponibles dans [`backend/REA
 ### Prérequis
 
 - [Node.js](https://nodejs.org/) v18+
-- [npm](https://www.npm.js.com/) ou [bun](https://bun.sh/)
+- [npm](https://www.npmjs.com/) ou [bun](https://bun.sh/)
 
 ### Installation
 
@@ -92,7 +92,7 @@ L'application sera accessible sur [http://localhost:5173](http://localhost:5173)
 npm run build
 # ou
 bun run build
-i```
+```
 
 ### Prévisualiser le build
 
@@ -102,7 +102,7 @@ npm run preview
 
 ---
 
-## �� Contact
+## 📬 Contact
 
 **Ibrahim Rahmani**
 
