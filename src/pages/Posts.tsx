@@ -47,17 +47,22 @@ const fallbackPosts: PostSummary[] = [
 ];
 
 const Posts = () => {
-  const [posts, setPosts] = useState<PostSummary[]>(fallbackPosts);
+  const [posts, setPosts] = useState<PostSummary[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
     getPosts(controller.signal)
       .then((data) => {
-        if (data.length > 0) setPosts(data);
+        setPosts(data);
+        setError(false);
       })
-      .catch(() => {
-        // Keep fallback posts until the backend is configured.
-      });
+      .catch((requestError) => {
+        if (requestError instanceof DOMException && requestError.name === "AbortError") return;
+        setError(true);
+      })
+      .finally(() => setLoading(false));
     return () => controller.abort();
   }, []);
 
@@ -77,7 +82,21 @@ const Posts = () => {
               </h1>
             </div>
 
-            {featuredPosts.length > 0 && (
+            {loading && (
+              <p className="text-center text-white/40">Chargement des articles...</p>
+            )}
+
+            {error && !loading && (
+              <p className="text-center text-red-400">
+                Impossible de charger les articles. Veuillez réessayer plus tard.
+              </p>
+            )}
+
+            {!loading && !error && posts.length === 0 && (
+              <p className="text-center text-white/40">Aucun article publié.</p>
+            )}
+
+            {!loading && !error && featuredPosts.length > 0 && (
               <section className="mb-24">
                 <div className="flex items-center gap-2 mb-10">
                   <TrendingUp className="h-4 w-4 text-primary" />
@@ -110,6 +129,7 @@ const Posts = () => {
               </section>
             )}
 
+            {!loading && !error && regularPosts.length > 0 && (
             <section>
               <div className="flex items-center justify-between mb-10">
                 <h2 className="text-sm font-bold uppercase tracking-widest text-white/50">Tous les articles</h2>
@@ -139,6 +159,7 @@ const Posts = () => {
                 ))}
               </div>
             </section>
+            )}
           </div>
         </div>
       </main>
