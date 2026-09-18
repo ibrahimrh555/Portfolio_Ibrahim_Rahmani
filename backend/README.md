@@ -25,61 +25,68 @@ Le frontend utilise `VITE_API_URL`, par exemple `http://127.0.0.1:8000/api`.
 
 ## Déploiement gratuit
 
-Architecture utilisée :
-
 | Partie | Hébergement | Prix |
 |---|---|---:|
 | Frontend React | GitHub Pages | 0 $ |
-| Backend Django | Render Web Service Free | 0 $ |
+| Backend Django | Vercel Hobby | 0 $ |
 | PostgreSQL | Neon Free | 0 $ |
 
-### 1. Créer la base Neon
+### 1. Base Neon
 
-1. Créer un projet sur [Neon](https://neon.com/).
-2. Copier la chaîne de connexion PostgreSQL en sélectionnant une connexion poolée si elle est proposée.
-3. Vérifier que l'URL se termine par `sslmode=require`.
-
-Exemple de format (ne jamais enregistrer la vraie valeur dans Git) :
+Créer un projet sur [Neon](https://neon.com/) et copier sa chaîne de connexion poolée :
 
 ```text
 postgresql://USER:PASSWORD@HOST/DBNAME?sslmode=require
 ```
 
-### 2. Déployer l'API sur Render
+Ne jamais enregistrer cette valeur dans Git.
 
-Créer un Blueprint Render depuis le fichier `render.yaml`. Celui-ci crée uniquement le Web Service gratuit et demande la valeur de `DATABASE_URL` pendant le déploiement.
+### 2. Projet Vercel
 
-Variables configurées par le Blueprint :
-
-- `SECRET_KEY` : générée automatiquement par Render ;
-- `DATABASE_URL` : chaîne de connexion copiée depuis Neon ;
-- `DEBUG=False` ;
-- `ALLOWED_HOSTS=portfolio-ibrahim-api.onrender.com` ;
-- `CORS_ALLOWED_ORIGINS=https://ibrahimrh555.github.io` ;
-- `CSRF_TRUSTED_ORIGINS=https://portfolio-ibrahim-api.onrender.com`.
-
-Si Render attribue un autre nom au service, mettre à jour `ALLOWED_HOSTS` et `CSRF_TRUSTED_ORIGINS` avec le vrai domaine Render.
-
-### 3. Créer l'administrateur
-
-Depuis le Shell Render :
-
-```bash
-python manage.py createsuperuser
-```
-
-L'administration sera disponible sur :
+Importer le dépôt GitHub dans Vercel avec ces réglages :
 
 ```text
-https://portfolio-ibrahim-api.onrender.com/admin/
+Project Name: portfolio-ibrahim-api
+Root Directory: backend
+Framework Preset: Other
+Production Branch: main
 ```
 
-### 4. Connecter GitHub Pages
+Le fichier `backend/vercel.json` configure la fonction Django. Vercel détecte `manage.py`, installe `requirements.txt` et collecte automatiquement les fichiers statiques.
 
-Dans `Settings > Secrets and variables > Actions > Variables`, créer :
+Ajouter les variables suivantes dans Vercel pour Production, Preview et Development :
 
 ```text
-VITE_API_URL=https://portfolio-ibrahim-api.onrender.com/api
+DATABASE_URL=<URL Neon>
+SECRET_KEY=<clé aléatoire longue>
+DEBUG=False
+ALLOWED_HOSTS=.vercel.app
+CORS_ALLOWED_ORIGINS=https://ibrahimrh555.github.io
+CSRF_TRUSTED_ORIGINS=https://portfolio-ibrahim-api.vercel.app
 ```
 
-Puis relancer le workflow GitHub Actions afin de reconstruire le frontend avec l'URL publique de l'API.
+Après le premier déploiement, remplacer `portfolio-ibrahim-api.vercel.app` par le véritable domaine Vercel si nécessaire.
+
+### 3. Migrations et administrateur
+
+Dans GitHub, ouvrir `Settings > Secrets and variables > Actions`, puis créer les secrets :
+
+```text
+NEON_DATABASE_URL=<URL Neon>
+DJANGO_SECRET_KEY=<même SECRET_KEY que Vercel>
+DJANGO_SUPERUSER_USERNAME=<nom administrateur>
+DJANGO_SUPERUSER_EMAIL=<email administrateur>
+DJANGO_SUPERUSER_PASSWORD=<mot de passe fort>
+```
+
+Exécuter ensuite `Actions > Migrate Neon database > Run workflow` sur `main`. Ce workflow applique les migrations et crée l'administrateur lors de la première exécution.
+
+### 4. GitHub Pages
+
+Créer ou modifier la variable GitHub Actions :
+
+```text
+VITE_API_URL=https://portfolio-ibrahim-api.vercel.app/api
+```
+
+Relancer ensuite `Validate and deploy portfolio` sur `main`.
