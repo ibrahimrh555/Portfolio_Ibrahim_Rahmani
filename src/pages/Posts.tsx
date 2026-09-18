@@ -7,45 +7,6 @@ import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 import { formatDate, getPosts, type PostSummary } from "@/lib/api";
 
-const fallbackPosts: PostSummary[] = [
-  {
-    id: 1,
-    title: "L'ère de l'IA Générative dans le Web Design",
-    excerpt: "Comment l'intelligence artificielle redéfinit la création d'interfaces, de la génération de composants au design prédictif.",
-    published_at: "2025-01-15T00:00:00Z",
-    read_time: 5,
-    tags: ["IA", "Design", "Futur"],
-    category: "IA & Design",
-    slug: "ia-web-design-2025",
-    featured: true,
-    cover_image_url: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800",
-  },
-  {
-    id: 2,
-    title: "Performance React : Le Guide Ultime",
-    excerpt: "Techniques avancées pour créer des applications fluides, maintenables et performantes.",
-    published_at: "2025-01-10T00:00:00Z",
-    read_time: 8,
-    tags: ["React", "Performance"],
-    category: "Frontend",
-    slug: "optimiser-react-2025",
-    featured: true,
-    cover_image_url: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=800",
-  },
-  {
-    id: 3,
-    title: "TypeScript : rendre son code plus robuste",
-    excerpt: "Des pratiques simples pour tirer parti du typage et réduire les erreurs dans une application moderne.",
-    published_at: "2025-01-05T00:00:00Z",
-    read_time: 6,
-    tags: ["TypeScript", "Code"],
-    category: "Développement",
-    slug: "tips-typescript",
-    featured: false,
-    cover_image_url: "",
-  },
-];
-
 const Posts = () => {
   const [posts, setPosts] = useState<PostSummary[]>([]);
   const [loading, setLoading] = useState(true);
