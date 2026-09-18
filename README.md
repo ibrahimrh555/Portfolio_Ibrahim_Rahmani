@@ -20,6 +20,8 @@ Ce portfolio est une application web développée avec les technologies front-en
 | **Tailwind CSS** | Styling utilitaire |
 | **shadcn/ui** | Composants UI accessibles |
 | **ESLint** | Linting & qualité de code |
+| **Django REST Framework** | API des projets et articles |
+| **PostgreSQL (Neon)** | Base de données de production |
 
 ---
 
@@ -28,6 +30,7 @@ Ce portfolio est une application web développée avec les technologies front-en
 ```
 Portfolio_Ibrahim_Rahmani/
 ├── public/             # Assets statiques (images, favicon...)
+├── backend/            # API Django REST et administration
 ├── src/                # Code source principal
 │   ├── components/     # Composants React réutilisables
 │   ├── pages/          # Pages de l'application
@@ -39,6 +42,16 @@ Portfolio_Ibrahim_Rahmani/
 └── package.json        # Dépendances & scripts
 ```
 
+## ☁️ Hébergement
+
+| Partie | Hébergement | Prix |
+|---|---|---:|
+| Frontend React | GitHub Pages | 0 $ |
+| Backend Django | Render Web Service Free | 0 $ |
+| PostgreSQL | Neon Free | 0 $ |
+
+Les instructions complètes de configuration sont disponibles dans [`backend/README.md`](backend/README.md).
+
 ---
 
 ## 🚀 Démarrage rapide
@@ -46,7 +59,7 @@ Portfolio_Ibrahim_Rahmani/
 ### Prérequis
 
 - [Node.js](https://nodejs.org/) v18+
-- [npm](https://www.npmjs.com/) ou [bun](https://bun.sh/)
+- [npm](https://www.npm.js.com/) ou [bun](https://bun.sh/)
 
 ### Installation
 
@@ -79,7 +92,7 @@ L'application sera accessible sur [http://localhost:5173](http://localhost:5173)
 npm run build
 # ou
 bun run build
-```
+i```
 
 ### Prévisualiser le build
 
@@ -89,7 +102,7 @@ npm run preview
 
 ---
 
-## 📬 Contact
+## �� Contact
 
 **Ibrahim Rahmani**
 
