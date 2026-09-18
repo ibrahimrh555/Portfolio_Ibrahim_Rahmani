@@ -7,46 +7,40 @@ import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { formatDate, getPost, type PostDetail as PostDetailType } from "@/lib/api";
 
-const fallbackPost: PostDetailType = {
-  id: 1,
-  title: "L'ère de l'IA Générative dans le Web Design",
-  slug: "ia-web-design-2025",
-  category: "IA & Design",
-  published_at: "2025-01-15T00:00:00Z",
-  read_time: 5,
-  featured: true,
-  tags: ["Intelligence Artificielle", "Productivité", "Interface", "Code"],
-  excerpt: "Comment l'intelligence artificielle redéfinit la création d'interfaces.",
-  cover_image_url: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200",
-  updated_at: "2025-01-15T00:00:00Z",
-  content: `
-    <p>L'intelligence artificielle est devenue un outil important pour les designers et les développeurs web.</p>
-    <h2>Du design statique au design génératif</h2>
-    <p>Les outils modernes permettent de prototyper, vérifier et améliorer plus rapidement les interfaces tout en laissant les décisions produit aux équipes.</p>
-    <h2>Optimisation du workflow</h2>
-    <p>La génération assistée de composants libère du temps pour l'architecture, l'accessibilité et l'expérience utilisateur.</p>
-  `,
-};
-
 const PostDetail = () => {
   const { slug = "" } = useParams();
-  const [post, setPost] = useState<PostDetailType>(fallbackPost);
+  const [post, setPost] = useState<PostDetailType | null>(null);
+  const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
+    setLoading(true);
+    setNotFound(false);
     getPost(slug, controller.signal)
       .then((data) => {
         setPost(data);
-        setNotFound(false);
       })
-      .catch(() => {
-        if (slug !== fallbackPost.slug) setNotFound(true);
-      });
+      .catch((requestError) => {
+        if (requestError instanceof DOMException && requestError.name === "AbortError") return;
+        setNotFound(true);
+      })
+      .finally(() => setLoading(false));
     return () => controller.abort();
   }, [slug]);
 
-  if (notFound) {
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#030303] text-white">
+        <Navigation />
+        <main className="pt-40 text-center">
+          <p className="text-white/40">Chargement de l’article...</p>
+        </main>
+      </div>
+    );
+  }
+
+  if (notFound || !post) {
     return (
       <div className="min-h-screen bg-[#030303] text-white">
         <Navigation />
