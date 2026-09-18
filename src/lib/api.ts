@@ -1,6 +1,7 @@
-const configuredUrl = import.meta.env.VITE_API_URL?.trim();
+const DEFAULT_API_URL = "https://portfolio-ibrahim-rahmani-ten.vercel.app/api";
+const configuredUrl = import.meta.env.VITE_API_URL?.trim() || DEFAULT_API_URL;
 export const isApiConfigured = Boolean(configuredUrl);
-const API_URL = configuredUrl?.replace(/\/$/, "");
+const API_URL = configuredUrl.replace(/\/$/, "");
 
 export interface Project {
   id: number;
