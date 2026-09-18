@@ -52,7 +52,9 @@ Framework Preset: Other
 Production Branch: main
 ```
 
-Le fichier `backend/vercel.json` configure la fonction Django. Vercel détecte `manage.py`, installe `requirements.txt` et collecte automatiquement les fichiers statiques.
+Le fichier `backend/api/index.py` expose l'application WSGI à Vercel. Le fichier
+`backend/vercel.json` redirige toutes les requêtes vers cette fonction et lance
+la collecte des fichiers statiques pendant le build.
 
 Ajouter les variables suivantes dans Vercel pour Production, Preview et Development :
 
