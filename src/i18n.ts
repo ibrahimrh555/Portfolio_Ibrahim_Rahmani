@@ -28,9 +28,42 @@ const resources = {
         journey: "Voir mon parcours", downloadCv: "Télécharger mon CV", portfolio: "Portfolio",
         selectedProjects: "Projets sélectionnés", allProjects: "Voir tous les projets",
         servicesTitle: "Expertise & Services", servicesDescription: "Je conçois des applications complètes, de l’interface utilisateur jusqu’aux APIs, aux données et aux objets connectés.",
-        contactSuccess: "Message envoyé !", contactSuccessDescription: "Je vous répondrai dans les plus brefs délais."
+        contactSuccess: "Message envoyé !", contactSuccessDescription: "Je vous répondrai dans les plus brefs délais.",
+        featured: { ecommerce: "Plateforme E-commerce", iot: "Solution IoT" },
+        services: {
+          web: { title: "Web & Mobile", description: "Interfaces responsives et applications mobiles avec React, React Native, TypeScript et Expo." },
+          backend: { title: "Backend & APIs", description: "APIs REST et services métier avec Spring Boot, Django REST, Hono et tRPC." },
+          iot: { title: "IoT & Données", description: "Solutions connectées avec ESP32, capteurs, MySQL et tableaux de bord temps réel." }
+        },
+        contact: {
+          badge: "Contact", title: "Un projet ?", accent: "Parlons-en.",
+          description: "Une idée ou une question ? Remplissez ce formulaire et je vous répondrai rapidement.",
+          location: "Maroc • À distance", name: "Nom", namePlaceholder: "Votre nom", email: "Email",
+          subject: "Sujet", subjectPlaceholder: "Sujet", message: "Message",
+          messagePlaceholder: "Comment puis-je vous aider ?", sending: "Envoi...", send: "Envoyer le message"
+        }
       },
-      about: { title: "À propos", subtitle: "Développeur Full Stack et élève ingénieur en Génie Informatique." }
+      about: {
+        title: "À propos", subtitle: "Développeur Full Stack et élève ingénieur en Génie Informatique.",
+        heading: "À propos de moi", valuesTitle: "Mes valeurs & soft skills", skillsTitle: "Expertise technique",
+        galleryAlt: "Projet ou activité {{count}}",
+        bio: {
+          intro: "Je suis <strong>Ibrahim Rahmani</strong>, élève ingénieur en Génie Informatique, option TALIS, à l’<school>ENSA Khouribga</school>.",
+          experience: "Spécialisé en développement <strong>Full Stack web et mobile</strong>, je travaille avec React, React Native, TypeScript, Spring Boot, Django, Hono et tRPC. Mes expériences couvrent les applications mobiles, les APIs backend, les plateformes métier et les systèmes IoT connectés avec ESP32.",
+          goal: "Après avoir réalisé mon PFA sur l’application mobile <strong>10in</strong>, je recherche un <strong>stage PFE 2026/2027</strong> pour contribuer à des produits web ou mobiles ambitieux et approfondir mon expertise en ingénierie logicielle."
+        },
+        skills: {
+          frontend: { title: "Frontend & Mobile", description: "Création d’interfaces web et d’applications mobiles modernes, responsives et accessibles." },
+          backend: { title: "Backend & APIs", description: "Conception d’APIs REST et de services backend fiables avec des architectures modulaires." },
+          devops: { title: "Data & DevOps", description: "Gestion des données, automatisation CI/CD et déploiement d’applications modernes." },
+          iot: { title: "IoT & Systèmes embarqués", description: "Intégration matériel-logiciel pour la collecte et le suivi de données en temps réel." }
+        },
+        values: {
+          analysis: { title: "Rigueur analytique", description: "Approche structurée pour concevoir des solutions performantes et sécurisées." },
+          leadership: { title: "Leadership & Agile", description: "Expérience en gestion d’équipe (Club JLM) et méthodologie Scrum." },
+          innovation: { title: "Innovation", description: "Créativité technique appliquée aux projets IoT et digitaux." }
+        }
+      }
     }
   },
   en: {
@@ -56,9 +89,42 @@ const resources = {
         journey: "View my journey", downloadCv: "Download my résumé", portfolio: "Portfolio",
         selectedProjects: "Selected projects", allProjects: "View all projects",
         servicesTitle: "Expertise & Services", servicesDescription: "I build complete applications, from user interfaces to APIs, data and connected devices.",
-        contactSuccess: "Message sent!", contactSuccessDescription: "I will get back to you as soon as possible."
+        contactSuccess: "Message sent!", contactSuccessDescription: "I will get back to you as soon as possible.",
+        featured: { ecommerce: "E-commerce Platform", iot: "IoT Solution" },
+        services: {
+          web: { title: "Web & Mobile", description: "Responsive interfaces and mobile apps using React, React Native, TypeScript and Expo." },
+          backend: { title: "Backend & APIs", description: "REST APIs and business services using Spring Boot, Django REST, Hono and tRPC." },
+          iot: { title: "IoT & Data", description: "Connected solutions using ESP32, sensors, MySQL and real-time dashboards." }
+        },
+        contact: {
+          badge: "Contact", title: "Have a project?", accent: "Let’s talk.",
+          description: "Have an idea or a question? Complete this form and I will get back to you shortly.",
+          location: "Morocco • Remote", name: "Name", namePlaceholder: "Your name", email: "Email",
+          subject: "Subject", subjectPlaceholder: "Subject", message: "Message",
+          messagePlaceholder: "How can I help you?", sending: "Sending...", send: "Send message"
+        }
       },
-      about: { title: "About", subtitle: "Full Stack developer and Computer Engineering student." }
+      about: {
+        title: "About", subtitle: "Full Stack developer and Computer Engineering student.",
+        heading: "About me", valuesTitle: "My values & soft skills", skillsTitle: "Technical expertise",
+        galleryAlt: "Project or activity {{count}}",
+        bio: {
+          intro: "I am <strong>Ibrahim Rahmani</strong>, a Computer Engineering student specializing in TALIS at <school>ENSA Khouribga</school>.",
+          experience: "Specialized in <strong>Full Stack web and mobile development</strong>, I work with React, React Native, TypeScript, Spring Boot, Django, Hono and tRPC. My experience covers mobile applications, backend APIs, business platforms and ESP32-connected IoT systems.",
+          goal: "After completing my final-year project on the <strong>10in</strong> mobile application, I am seeking a <strong>2026/2027 graduation internship</strong> to contribute to ambitious web or mobile products and deepen my software engineering expertise."
+        },
+        skills: {
+          frontend: { title: "Frontend & Mobile", description: "Modern, responsive and accessible web interfaces and mobile applications." },
+          backend: { title: "Backend & APIs", description: "Reliable REST APIs and backend services built with modular architectures." },
+          devops: { title: "Data & DevOps", description: "Data management, CI/CD automation and modern application deployment." },
+          iot: { title: "IoT & Embedded Systems", description: "Hardware-software integration for real-time data collection and monitoring." }
+        },
+        values: {
+          analysis: { title: "Analytical rigor", description: "A structured approach to designing efficient and secure solutions." },
+          leadership: { title: "Leadership & Agile", description: "Team management experience (JLM Club) and Scrum methodology." },
+          innovation: { title: "Innovation", description: "Technical creativity applied to IoT and digital projects." }
+        }
+      }
     }
   }
 } as const;

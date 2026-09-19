@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
 
-from .models import Post, Project
+from .models import Post, PostTranslation, Project, ProjectTranslation
 
 
 class PublicApiTests(TestCase):
@@ -22,3 +22,31 @@ class PublicApiTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual([item["title"] for item in response.json()], ["Published"])
+
+    def test_project_uses_requested_english_translation(self):
+        project = Project.objects.create(title="Projet", short_description="Description", published=True)
+        ProjectTranslation.objects.create(
+            project=project,
+            language="en",
+            title="Project",
+            short_description="English description",
+            description="English details",
+        )
+
+        response = self.client.get(reverse("project-list"), HTTP_ACCEPT_LANGUAGE="en")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()[0]["title"], "Project")
+
+    def test_missing_translation_falls_back_to_french_source(self):
+        Post.objects.create(
+            title="Article français",
+            excerpt="Résumé",
+            content="Contenu",
+            status=Post.Status.PUBLISHED,
+        )
+
+        response = self.client.get(reverse("post-list") + "?lang=en")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()[0]["title"], "Article français")

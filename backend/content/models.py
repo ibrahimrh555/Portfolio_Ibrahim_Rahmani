@@ -102,7 +102,7 @@ class CategoryTranslation(models.Model):
         constraints = [
             models.UniqueConstraint(fields=["category", "language"], name="unique_category_translation"),
         ]
-        indexes = [models.Index(fields=["language", "category"])]
+        indexes = [models.Index(fields=["language", "category"], name="content_cat_languag_8d573c_idx")]
 
     def __str__(self):
         return f"{self.category.slug} ({self.language})"
@@ -119,7 +119,7 @@ class ProjectTranslation(models.Model):
         constraints = [
             models.UniqueConstraint(fields=["project", "language"], name="unique_project_translation"),
         ]
-        indexes = [models.Index(fields=["language", "project"])]
+        indexes = [models.Index(fields=["language", "project"], name="content_pro_languag_d3775e_idx")]
 
     def __str__(self):
         return f"{self.project.slug} ({self.language})"
@@ -136,7 +136,7 @@ class PostTranslation(models.Model):
         constraints = [
             models.UniqueConstraint(fields=["post", "language"], name="unique_post_translation"),
         ]
-        indexes = [models.Index(fields=["language", "post"])]
+        indexes = [models.Index(fields=["language", "post"], name="content_pos_languag_0160fc_idx")]
 
     def __str__(self):
         return f"{self.post.slug} ({self.language})"
