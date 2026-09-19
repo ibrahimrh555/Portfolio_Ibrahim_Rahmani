@@ -110,7 +110,18 @@ const PostDetail = () => {
           <div className="max-w-3xl mx-auto">
             <div
               dangerouslySetInnerHTML={{ __html: sanitizedContent }}
-              className="prose prose-lg prose-invert prose-primary max-w-none prose-headings:font-display prose-headings:tracking-tight prose-h2:mt-12 prose-h2:mb-4 prose-h2:text-3xl prose-p:my-5 prose-p:leading-8 prose-p:text-white/65"
+              className="max-w-none text-lg text-white/70
+                [&_h1]:mt-14 [&_h1]:mb-6 [&_h1]:font-display [&_h1]:text-4xl [&_h1]:font-bold [&_h1]:tracking-tight [&_h1]:text-white
+                [&_h2]:mt-12 [&_h2]:mb-5 [&_h2]:border-l-4 [&_h2]:border-primary [&_h2]:pl-5 [&_h2]:font-display [&_h2]:text-3xl [&_h2]:font-bold [&_h2]:tracking-tight [&_h2]:text-white
+                [&_h3]:mt-10 [&_h3]:mb-4 [&_h3]:font-display [&_h3]:text-2xl [&_h3]:font-semibold [&_h3]:text-white
+                [&_p]:my-5 [&_p]:leading-8
+                [&_ul]:my-6 [&_ul]:space-y-3 [&_ul]:pl-6 [&_ul]:list-disc [&_ul]:marker:text-primary
+                [&_ol]:my-6 [&_ol]:space-y-3 [&_ol]:pl-6 [&_ol]:list-decimal [&_ol]:marker:font-bold [&_ol]:marker:text-primary
+                [&_li]:pl-2 [&_li]:leading-8
+                [&_blockquote]:my-8 [&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:bg-white/[0.03] [&_blockquote]:px-6 [&_blockquote]:py-4 [&_blockquote]:italic
+                [&_hr]:my-10 [&_hr]:border-white/10
+                [&_a]:font-medium [&_a]:text-primary [&_a]:underline [&_a]:underline-offset-4
+                [&_strong]:font-semibold [&_strong]:text-white"
             />
             <div className="mt-16 pt-8 border-t border-white/10 flex flex-wrap gap-3">
               {post.tags.map((tag) => (
