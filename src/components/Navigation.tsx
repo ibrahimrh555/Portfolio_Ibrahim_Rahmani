@@ -1,15 +1,13 @@
 import { Link, useLocation } from "react-router-dom";
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "./ui/button";
-import { useTheme } from "next-themes";
 import type { SupportedLanguage } from "@/i18n";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const { theme, setTheme } = useTheme();
   const { t, i18n } = useTranslation();
 
   const language: SupportedLanguage = i18n.resolvedLanguage?.startsWith("en") ? "en" : "fr";
@@ -70,18 +68,10 @@ const Navigation = () => {
               </Link>
             ))}
             <LanguageSwitcher />
-            <Button variant="ghost" size="icon" onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="hover:bg-primary/10" aria-label={t("navigation.theme")}>
-              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-            </Button>
           </div>
 
           <div className="md:hidden flex items-center gap-2">
             <LanguageSwitcher />
-            <Button variant="ghost" size="icon" onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="hover:bg-primary/10" aria-label={t("navigation.theme")}>
-              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-            </Button>
             <Button variant="ghost" size="icon" className="hover:bg-primary/10" onClick={() => setIsOpen(!isOpen)} aria-label={t("navigation.menu")}>
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
