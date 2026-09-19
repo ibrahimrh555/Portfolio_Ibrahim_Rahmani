@@ -65,7 +65,7 @@ const Posts = () => {
                   <TrendingUp className="h-4 w-4 text-primary" />
                   <h2 className="text-sm font-bold uppercase tracking-widest text-white/50">{t("posts.featured")}</h2>
                 </div>
-                <div className="grid lg:grid-cols-2 gap-10">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {featuredPosts.map((post) => (
                     <motion.article key={post.id} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="group">
                       <Link to={`/posts/${post.slug}`} className="block space-y-6">
@@ -81,7 +81,7 @@ const Posts = () => {
                             ))}
                             <span className="text-[10px] font-bold uppercase tracking-widest text-white/20">• {t("posts.minutes", { count: post.read_time })}</span>
                           </div>
-                          <h3 className="text-3xl font-bold tracking-tight group-hover:text-primary transition-colors">{post.title}</h3>
+                          <h3 className="text-2xl font-bold tracking-tight group-hover:text-primary transition-colors">{post.title}</h3>
                           <p className="text-white/40 leading-relaxed line-clamp-2">{post.excerpt}</p>
                           <div className="flex items-center gap-2 text-sm font-bold">{t("posts.read")} <ArrowRight className="h-4 w-4 text-primary" /></div>
                         </div>
@@ -98,17 +98,17 @@ const Posts = () => {
                 <h2 className="text-sm font-bold uppercase tracking-widest text-white/50">{t("posts.all")}</h2>
                 <Filter className="h-4 w-4 text-white/20" />
               </div>
-              <div className="grid gap-4">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {regularPosts.map((post) => (
-                  <article key={post.id} className="group border-b border-white/5 hover:border-primary/30 transition-colors">
-                    <Link to={`/posts/${post.slug}`} className="flex flex-col md:flex-row md:items-center justify-between py-8 gap-6">
-                      <div className="max-w-2xl space-y-2">
+                  <article key={post.id} className="group rounded-2xl border border-white/10 bg-white/[0.02] hover:border-primary/30 transition-all hover:-translate-y-1">
+                    <Link to={`/posts/${post.slug}`} className="flex h-full flex-col justify-between p-6 gap-6">
+                      <div className="space-y-3">
                         <span className="text-[10px] font-bold text-white/20 uppercase tracking-[0.2em]">{formatDate(post.published_at)}</span>
                         <h3 className="text-2xl font-bold group-hover:translate-x-2 transition-transform duration-300">{post.title}</h3>
-                        <p className="text-white/40 text-sm line-clamp-1 italic">{post.excerpt}</p>
+                        <p className="text-white/40 text-sm line-clamp-3 italic">{post.excerpt}</p>
                       </div>
-                      <div className="flex items-center gap-6">
-                        <div className="hidden md:flex flex-wrap gap-2">
+                      <div className="flex items-end justify-between gap-4">
+                        <div className="flex flex-wrap gap-2">
                           {post.tags.map((tag) => (
                             <Badge key={tag} variant="outline" className="border-white/10 text-[10px] text-white/40 uppercase">{tag}</Badge>
                           ))}
