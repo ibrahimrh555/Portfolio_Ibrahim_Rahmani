@@ -1,3 +1,5 @@
+import i18n from "@/i18n";
+
 const DEFAULT_API_URL = "https://portfolio-ibrahim-rahmani-ten.vercel.app/api";
 const configuredUrl = import.meta.env.VITE_API_URL?.trim() || DEFAULT_API_URL;
 export const isApiConfigured = Boolean(configuredUrl);
@@ -43,7 +45,10 @@ async function apiRequest<T>(path: string, signal?: AbortSignal): Promise<T> {
   }
 
   const response = await fetch(`${API_URL}${path}`, {
-    headers: { Accept: "application/json" },
+    headers: {
+      Accept: "application/json",
+      "Accept-Language": i18n.resolvedLanguage?.startsWith("en") ? "en" : "fr",
+    },
     signal,
   });
 
@@ -65,7 +70,8 @@ export const getPost = (slug: string, signal?: AbortSignal) =>
 
 export function formatDate(value: string | null): string {
   if (!value) return "";
-  return new Intl.DateTimeFormat("fr-FR", {
+  const locale = i18n.resolvedLanguage?.startsWith("en") ? "en-US" : "fr-FR";
+  return new Intl.DateTimeFormat(locale, {
     day: "2-digit",
     month: "short",
     year: "numeric",
