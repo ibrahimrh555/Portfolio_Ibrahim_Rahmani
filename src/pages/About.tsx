@@ -2,8 +2,10 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Code, Server, Cpu, Award, Users, Search, Database, Smartphone } from "lucide-react";
 import { motion } from "framer-motion";
+import { Trans, useTranslation } from "react-i18next";
 
 const About = () => {
+  const { t } = useTranslation();
   const baseUrl = import.meta.env.BASE_URL;
 
   const images = [
@@ -18,26 +20,26 @@ const About = () => {
   const skills = [
     {
       icon: Smartphone,
-      title: "Frontend & Mobile",
-      description: "Création d'interfaces web et d'applications mobiles modernes, responsives et accessibles.",
+      title: t("about.skills.frontend.title"),
+      description: t("about.skills.frontend.description"),
       tags: ["React.js", "React Native", "TypeScript", "Expo", "Tailwind CSS"],
     },
     {
       icon: Server,
-      title: "Backend & APIs",
-      description: "Conception d'APIs REST et de services backend fiables avec des architectures modulaires.",
+      title: t("about.skills.backend.title"),
+      description: t("about.skills.backend.description"),
       tags: ["Java", "Spring Boot", "Python", "Django REST", "Hono", "tRPC"],
     },
     {
       icon: Database,
-      title: "Data & DevOps",
-      description: "Gestion des données, automatisation CI/CD et déploiement d'applications modernes.",
+      title: t("about.skills.devops.title"),
+      description: t("about.skills.devops.description"),
       tags: ["MySQL", "SQLite/Turso", "Docker", "Git/GitHub", "GitHub Actions", "Cloudflare Workers"],
     },
     {
       icon: Cpu,
-      title: "IoT & Systèmes embarqués",
-      description: "Intégration matériel-logiciel pour la collecte et le suivi de données en temps réel.",
+      title: t("about.skills.iot.title"),
+      description: t("about.skills.iot.description"),
       tags: ["C++", "ESP32", "YF-S201", "Arduino", "Wi-Fi"],
     },
   ];
@@ -46,18 +48,18 @@ const About = () => {
   const values = [
     { 
       icon: Search, 
-      title: "Rigueur Analytique", 
-      desc: "Approche structurée pour concevoir des solutions performantes et sécurisées." 
+      title: t("about.values.analysis.title"),
+      desc: t("about.values.analysis.description")
     },
     { 
       icon: Users, 
-      title: "Leadership & Agile", 
-      desc: "Expérience en gestion d'équipe (Club JLM) et méthodologie Scrum." 
+      title: t("about.values.leadership.title"),
+      desc: t("about.values.leadership.description")
     },
     { 
       icon: Award, 
-      title: "Innovation", 
-      desc: "Créativité technique appliquée aux projets IoT et digitaux." 
+      title: t("about.values.innovation.title"),
+      desc: t("about.values.innovation.description")
     },
   ];
 
@@ -71,27 +73,21 @@ const About = () => {
             {/* Hero Section */}
             <div className="mb-16">
               <h1 className="font-display text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
-                À Propos de moi
+                {t("about.heading")}
               </h1>
               
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div className="space-y-6 text-lg text-muted-foreground animate-slide-up">
                   <p className="leading-relaxed">
-                    Je suis <span className="text-foreground font-semibold">Ibrahim Rahmani</span>, 
-                    Élève ingénieur en Génie Informatique, option TALIS, à l'<span className="text-primary font-semibold">ENSA Khouribga</span>.
+                    <Trans i18nKey="about.bio.intro" components={{ strong: <span className="text-foreground font-semibold" />, school: <span className="text-primary font-semibold" /> }} />
                   </p>
                   
                   <p className="leading-relaxed">
-                    Spécialisé en développement <span className="text-foreground font-semibold">Full Stack web et mobile</span>, 
-                    je travaille avec React, React Native, TypeScript, Spring Boot, Django, Hono et tRPC. 
-                    Mes expériences couvrent les applications mobiles, les APIs backend, les plateformes métier 
-                    et les systèmes IoT connectés avec ESP32.
+                    <Trans i18nKey="about.bio.experience" components={{ strong: <span className="text-foreground font-semibold" /> }} />
                   </p>
 
                   <p className="leading-relaxed border-l-4 border-primary pl-4 bg-primary/5 py-2 rounded-r-lg">
-                    Après avoir réalisé mon PFA sur l'application mobile <span className="text-foreground font-semibold">10in</span>, 
-                    je recherche un <span className="text-foreground font-semibold">stage PFE 2026/2027</span> pour contribuer 
-                    à des produits web ou mobiles ambitieux et approfondir mon expertise en ingénierie logicielle.
+                    <Trans i18nKey="about.bio.goal" components={{ strong: <span className="text-foreground font-semibold" /> }} />
                   </p>
                 </div>
 
@@ -127,7 +123,7 @@ const About = () => {
                 >
                   <img
                     src={src}
-                    alt={`Projet ou activité ${index + 1}`}
+                    alt={t("about.galleryAlt", { count: index + 1 })}
                     className="w-full h-full object-cover"
                   />
                 </motion.div>
@@ -137,7 +133,7 @@ const About = () => {
             
             {/* Values / Soft Skills Section */}
             <div className="mb-16">
-              <h2 className="font-display text-3xl font-bold mb-8 text-center">Mes Valeurs & Soft Skills</h2>
+              <h2 className="font-display text-3xl font-bold mb-8 text-center">{t("about.valuesTitle")}</h2>
               <div className="grid md:grid-cols-3 gap-6">
                 {values.map((value, index) => (
                   <div
@@ -155,7 +151,7 @@ const About = () => {
 
             {/* Technical Skills Section */}
             <div>
-              <h2 className="font-display text-3xl font-bold mb-8 text-center">Expertise Technique</h2>
+              <h2 className="font-display text-3xl font-bold mb-8 text-center">{t("about.skillsTitle")}</h2>
               <div className="grid md:grid-cols-2 gap-8">
                 {skills.map((skill, index) => (
                   <div

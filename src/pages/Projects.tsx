@@ -5,6 +5,7 @@ import { ExternalLink, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { getProjects, type Project } from "@/lib/api";
+import { useTranslation } from "react-i18next";
 
 const colors = [
   "from-blue-500/20 to-cyan-500/20 border-blue-500/30",
@@ -13,6 +14,7 @@ const colors = [
 ];
 
 const Projects = () => {
+  const { t, i18n } = useTranslation();
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -30,7 +32,7 @@ const Projects = () => {
       })
       .finally(() => setLoading(false));
     return () => controller.abort();
-  }, []);
+  }, [i18n.resolvedLanguage]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -40,25 +42,25 @@ const Projects = () => {
           <div className="max-w-7xl mx-auto">
             <div className="mb-16 text-center">
               <h1 className="font-display text-5xl md:text-7xl font-bold mb-6 animate-fade-in bg-gradient-to-br from-foreground via-foreground to-muted-foreground bg-clip-text text-transparent">
-                Mes Projets
+                {t("projects.title")}
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto animate-slide-up">
-                Découvrez mes réalisations en développement Full Stack, mobile, backend et IoT.
+                {t("projects.description")}
               </p>
             </div>
 
             {loading && (
-              <p className="text-center text-muted-foreground">Chargement des projets...</p>
+              <p className="text-center text-muted-foreground">{t("projects.loading")}</p>
             )}
 
             {error && !loading && (
               <p className="text-center text-destructive">
-                Impossible de charger les projets. Veuillez réessayer plus tard.
+                {t("projects.error")}
               </p>
             )}
 
             {!loading && !error && projects.length === 0 && (
-              <p className="text-center text-muted-foreground">Aucun projet publié.</p>
+              <p className="text-center text-muted-foreground">{t("projects.empty")}</p>
             )}
 
             {!loading && !error && (
@@ -98,7 +100,7 @@ const Projects = () => {
                           <Button variant="default" size="sm" className="flex-1" asChild>
                             <a href={project.demo_url} target="_blank" rel="noopener noreferrer">
                               <ExternalLink className="h-4 w-4 mr-2" />
-                              Démo
+                              {t("common.demo")}
                             </a>
                           </Button>
                         )}
@@ -106,7 +108,7 @@ const Projects = () => {
                           <Button variant="outline" size="sm" className="flex-1" asChild>
                             <a href={project.github_url} target="_blank" rel="noopener noreferrer">
                               <Github className="h-4 w-4 mr-2" />
-                              Code
+                              {t("common.code")}
                             </a>
                           </Button>
                         )}

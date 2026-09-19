@@ -6,8 +6,10 @@ import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 import { formatDate, getPosts, type PostSummary } from "@/lib/api";
+import { useTranslation } from "react-i18next";
 
 const Posts = () => {
+  const { t, i18n } = useTranslation();
   const [posts, setPosts] = useState<PostSummary[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -25,7 +27,7 @@ const Posts = () => {
       })
       .finally(() => setLoading(false));
     return () => controller.abort();
-  }, []);
+  }, [i18n.resolvedLanguage]);
 
   const featuredPosts = posts.filter((post) => post.featured);
   const regularPosts = posts.filter((post) => !post.featured);
@@ -44,24 +46,24 @@ const Posts = () => {
             </div>
 
             {loading && (
-              <p className="text-center text-white/40">Chargement des articles...</p>
+              <p className="text-center text-white/40">{t("posts.loading")}</p>
             )}
 
             {error && !loading && (
               <p className="text-center text-red-400">
-                Impossible de charger les articles. Veuillez réessayer plus tard.
+                {t("posts.error")}
               </p>
             )}
 
             {!loading && !error && posts.length === 0 && (
-              <p className="text-center text-white/40">Aucun article publié.</p>
+              <p className="text-center text-white/40">{t("posts.empty")}</p>
             )}
 
             {!loading && !error && featuredPosts.length > 0 && (
               <section className="mb-24">
                 <div className="flex items-center gap-2 mb-10">
                   <TrendingUp className="h-4 w-4 text-primary" />
-                  <h2 className="text-sm font-bold uppercase tracking-widest text-white/50">À la une</h2>
+                  <h2 className="text-sm font-bold uppercase tracking-widest text-white/50">{t("posts.featured")}</h2>
                 </div>
                 <div className="grid lg:grid-cols-2 gap-10">
                   {featuredPosts.map((post) => (
@@ -77,11 +79,11 @@ const Posts = () => {
                             {post.tags.map((tag) => (
                               <span key={tag} className="text-[10px] font-bold uppercase tracking-widest text-primary">{tag}</span>
                             ))}
-                            <span className="text-[10px] font-bold uppercase tracking-widest text-white/20">• {post.read_time} min</span>
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-white/20">• {t("posts.minutes", { count: post.read_time })}</span>
                           </div>
                           <h3 className="text-3xl font-bold tracking-tight group-hover:text-primary transition-colors">{post.title}</h3>
                           <p className="text-white/40 leading-relaxed line-clamp-2">{post.excerpt}</p>
-                          <div className="flex items-center gap-2 text-sm font-bold">LIRE L'ARTICLE <ArrowRight className="h-4 w-4 text-primary" /></div>
+                          <div className="flex items-center gap-2 text-sm font-bold">{t("posts.read")} <ArrowRight className="h-4 w-4 text-primary" /></div>
                         </div>
                       </Link>
                     </motion.article>
@@ -93,7 +95,7 @@ const Posts = () => {
             {!loading && !error && regularPosts.length > 0 && (
             <section>
               <div className="flex items-center justify-between mb-10">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-white/50">Tous les articles</h2>
+                <h2 className="text-sm font-bold uppercase tracking-widest text-white/50">{t("posts.all")}</h2>
                 <Filter className="h-4 w-4 text-white/20" />
               </div>
               <div className="grid gap-4">

@@ -1,6 +1,11 @@
 name: Migrate Neon database
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - "backend/content/migrations/**"
   workflow_dispatch:
 
 permissions:
