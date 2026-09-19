@@ -91,3 +91,52 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class CategoryTranslation(models.Model):
+    category = models.ForeignKey(Category, related_name="translations", on_delete=models.CASCADE)
+    language = models.CharField(max_length=5, choices=(("fr", "Français"), ("en", "English")))
+    name = models.CharField(max_length=100)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=["category", "language"], name="unique_category_translation"),
+        ]
+        indexes = [models.Index(fields=["language", "category"])]
+
+    def __str__(self):
+        return f"{self.category.slug} ({self.language})"
+
+
+class ProjectTranslation(models.Model):
+    project = models.ForeignKey(Project, related_name="translations", on_delete=models.CASCADE)
+    language = models.CharField(max_length=5, choices=(("fr", "Français"), ("en", "English")))
+    title = models.CharField(max_length=200)
+    short_description = models.CharField(max_length=320)
+    description = models.TextField(blank=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=["project", "language"], name="unique_project_translation"),
+        ]
+        indexes = [models.Index(fields=["language", "project"])]
+
+    def __str__(self):
+        return f"{self.project.slug} ({self.language})"
+
+
+class PostTranslation(models.Model):
+    post = models.ForeignKey(Post, related_name="translations", on_delete=models.CASCADE)
+    language = models.CharField(max_length=5, choices=(("fr", "Français"), ("en", "English")))
+    title = models.CharField(max_length=220)
+    excerpt = models.CharField(max_length=400)
+    content = models.TextField()
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=["post", "language"], name="unique_post_translation"),
+        ]
+        indexes = [models.Index(fields=["language", "post"])]
+
+    def __str__(self):
+        return f"{self.post.slug} ({self.language})"
