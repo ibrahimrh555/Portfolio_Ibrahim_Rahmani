@@ -12,11 +12,14 @@ const resources = {
       footer: { copyright: "© {{year}} Portfolio. Tous droits réservés." },
       projects: {
         eyebrow: "Portfolio", title: "Mes Projets", description: "Découvrez mes réalisations en développement Full Stack, mobile, backend et IoT.",
-        loading: "Chargement des projets...", error: "Impossible de charger les projets. Veuillez réessayer plus tard.", empty: "Aucun projet publié."
+        loading: "Chargement des projets...", error: "Impossible de charger les projets. Veuillez réessayer plus tard.", empty: "Aucun projet publié.", viewMore: "Voir plus"
       },
       posts: {
         title: "INSIGHTS & ARTICLES.", featured: "À la une", all: "Tous les articles", read: "LIRE L’ARTICLE",
         loading: "Chargement des articles...", error: "Impossible de charger les articles. Veuillez réessayer plus tard.", empty: "Aucun article publié.", minutes: "{{count}} min"
+      },
+      projectDetail: {
+        eyebrow: "Projet", loading: "Chargement du projet...", notFound: "Projet introuvable", back: "Retour aux projets", technologies: "Technologies utilisées"
       },
       postDetail: {
         loading: "Chargement de l’article...", notFound: "Article introuvable", back: "Retour au blog", readTime: "{{count}} min de lecture"
@@ -73,11 +76,14 @@ const resources = {
       footer: { copyright: "© {{year}} Portfolio. All rights reserved." },
       projects: {
         eyebrow: "Portfolio", title: "My Projects", description: "Explore my Full Stack, mobile, backend and IoT projects.",
-        loading: "Loading projects...", error: "Unable to load projects. Please try again later.", empty: "No published projects."
+        loading: "Loading projects...", error: "Unable to load projects. Please try again later.", empty: "No published projects.", viewMore: "View more"
       },
       posts: {
         title: "INSIGHTS & ARTICLES.", featured: "Featured", all: "All articles", read: "READ ARTICLE",
         loading: "Loading articles...", error: "Unable to load articles. Please try again later.", empty: "No published articles.", minutes: "{{count}} min"
+      },
+      projectDetail: {
+        eyebrow: "Project", loading: "Loading project...", notFound: "Project not found", back: "Back to projects", technologies: "Technologies used"
       },
       postDetail: {
         loading: "Loading article...", notFound: "Article not found", back: "Back to blog", readTime: "{{count}} min read"

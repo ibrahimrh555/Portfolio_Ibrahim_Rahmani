@@ -62,6 +62,9 @@ async function apiRequest<T>(path: string, signal?: AbortSignal): Promise<T> {
 export const getProjects = (signal?: AbortSignal) =>
   apiRequest<Project[]>("/projects/", signal);
 
+export const getProject = (slug: string, signal?: AbortSignal) =>
+  apiRequest<Project>(`/projects/${encodeURIComponent(slug)}/`, signal);
+
 export const getPosts = (signal?: AbortSignal) =>
   apiRequest<PostSummary[]>("/posts/", signal);
 
