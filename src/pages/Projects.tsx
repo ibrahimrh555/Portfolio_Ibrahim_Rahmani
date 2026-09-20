@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { ExternalLink, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { getProjects, type Project } from "@/lib/api";
-import { useTranslation } from "react-i18next";
 
 const colors = [
   "from-blue-500/20 to-cyan-500/20 border-blue-500/30",
@@ -54,9 +54,7 @@ const Projects = () => {
             )}
 
             {error && !loading && (
-              <p className="text-center text-destructive">
-                {t("projects.error")}
-              </p>
+              <p className="text-center text-destructive">{t("projects.error")}</p>
             )}
 
             {!loading && !error && projects.length === 0 && (
@@ -64,60 +62,44 @@ const Projects = () => {
             )}
 
             {!loading && !error && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects.map((project, index) => (
-                <article
-                  key={project.id}
-                  className="group relative animate-slide-up"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className={`h-full bg-gradient-to-br ${colors[index % colors.length]} backdrop-blur-sm border rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl`}>
-                    <div className="relative h-48 overflow-hidden">
-                      <img
-                        src={project.image_url}
-                        alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-60" />
-                    </div>
+              <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {projects.map((project, index) => (
+                  <article
+                    key={project.id}
+                    className="group animate-slide-up"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <div className={`flex h-full flex-col overflow-hidden rounded-2xl border bg-gradient-to-br backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl ${colors[index % colors.length]}`}>
+                      <Link
+                        to={`/projects/${project.slug}`}
+                        className="relative block aspect-[16/10] overflow-hidden"
+                        aria-label={project.title}
+                      >
+                        <img
+                          src={project.image_url}
+                          alt={project.title}
+                          loading="lazy"
+                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent" />
+                      </Link>
 
-                    <div className="flex flex-col h-[calc(100%-12rem)] p-6 space-y-4">
-                      <h2 className="font-display text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
-                        {project.title}
-                      </h2>
-                      <p className="text-muted-foreground text-sm leading-relaxed flex-grow">
-                        {project.short_description}
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {project.technologies.map((technology) => (
-                          <Badge key={technology} variant="secondary" className="text-xs">
-                            {technology}
-                          </Badge>
-                        ))}
-                      </div>
-                      <div className="flex gap-3 pt-4 mt-auto">
-                        {project.demo_url && (
-                          <Button variant="default" size="sm" className="flex-1" asChild>
-                            <a href={project.demo_url} target="_blank" rel="noopener noreferrer">
-                              <ExternalLink className="h-4 w-4 mr-2" />
-                              {t("common.demo")}
-                            </a>
-                          </Button>
-                        )}
-                        {project.github_url && (
-                          <Button variant="outline" size="sm" className="flex-1" asChild>
-                            <a href={project.github_url} target="_blank" rel="noopener noreferrer">
-                              <Github className="h-4 w-4 mr-2" />
-                              {t("common.code")}
-                            </a>
-                          </Button>
-                        )}
+                      <div className="flex flex-1 flex-col p-6">
+                        <h2 className="font-display text-2xl font-bold text-foreground">
+                          {project.title}
+                        </h2>
+
+                        <Button className="mt-6 w-full" variant="outline" asChild>
+                          <Link to={`/projects/${project.slug}`}>
+                            {t("projects.viewMore")}
+                            <ArrowRight className="ml-2 h-4 w-4" />
+                          </Link>
+                        </Button>
                       </div>
                     </div>
-                  </div>
-                </article>
-              ))}
-            </div>
+                  </article>
+                ))}
+              </div>
             )}
           </div>
         </div>
