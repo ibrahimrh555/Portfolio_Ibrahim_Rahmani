@@ -9,10 +9,10 @@ const About = () => {
   const baseUrl = import.meta.env.BASE_URL;
 
   const images = [
-    `${baseUrl}image1.jpeg`,
+    `${baseUrl}image 1.png`,
     `${baseUrl}image3.jpg`,
     `${baseUrl}image6.jpg`,
-    `${baseUrl}12.jpg`,
+    `${baseUrl}12.jpeg`,
     `${baseUrl}13.jpg`,
     `${baseUrl}14.jpg`,
   ];
@@ -98,7 +98,7 @@ const About = () => {
                   
                   <div className="relative w-80 h-80 rounded-full overflow-hidden border-4 border-background shadow-2xl ring-4 ring-primary/20">
                     <img 
-                      src={`${baseUrl}image1.jpeg`} 
+                      src={`${baseUrl}image 1.png`} 
                       alt="Ibrahim Rahmani Workspace"
                       className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
                     />
