@@ -7,6 +7,7 @@ const RouteSeo = () => {
   const { pathname } = useLocation();
   const { i18n } = useTranslation();
   const english = i18n.resolvedLanguage?.startsWith("en");
+  const normalizedPath = pathname === "/" ? pathname : pathname.replace(/\/+$/, "");
 
   const pages: Record<string, { title: string; description: string }> = english
     ? {
@@ -46,18 +47,18 @@ const RouteSeo = () => {
         },
       };
 
-  const page = pages[pathname];
+  const page = pages[normalizedPath];
   if (!page) {
-    if (pathname.startsWith("/projects/") || pathname.startsWith("/posts/")) return null;
-    return <Seo title="Page introuvable | Ibrahim Rahmani" description="Cette page n’existe pas." path={pathname} noIndex />;
+    if (normalizedPath.startsWith("/projects/") || normalizedPath.startsWith("/posts/")) return null;
+    return <Seo title="Page introuvable | Ibrahim Rahmani" description="Cette page n’existe pas." path={normalizedPath} noIndex />;
   }
 
   return (
     <Seo
       {...page}
-      path={pathname}
+      path={normalizedPath}
       structuredData={
-        pathname === "/"
+        normalizedPath === "/"
           ? {
               "@context": "https://schema.org",
               "@type": "Person",
