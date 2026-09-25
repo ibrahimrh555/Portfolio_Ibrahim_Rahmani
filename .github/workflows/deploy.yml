@@ -38,6 +38,13 @@ jobs:
         env:
           VITE_API_URL: ${{ vars.VITE_API_URL }}
         run: npm run build
+      - name: Create static route entry points
+        if: github.event_name != 'pull_request'
+        run: |
+          for route in projects posts about; do
+            mkdir -p "dist/$route"
+            cp dist/index.html "dist/$route/index.html"
+          done
       - name: Configure SPA fallback
         if: github.event_name != 'pull_request'
         run: cp dist/index.html dist/404.html
