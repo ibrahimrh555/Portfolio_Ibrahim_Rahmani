@@ -37,7 +37,7 @@ const Projects = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <main className="pt-24 pb-16">
+      <main id="main-content" tabIndex={-1} className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="mb-16 text-center">
@@ -50,11 +50,11 @@ const Projects = () => {
             </div>
 
             {loading && (
-              <p className="text-center text-muted-foreground">{t("projects.loading")}</p>
+              <p role="status" className="text-center text-muted-foreground">{t("projects.loading")}</p>
             )}
 
             {error && !loading && (
-              <p className="text-center text-destructive">{t("projects.error")}</p>
+              <p role="alert" className="text-center text-destructive">{t("projects.error")}</p>
             )}
 
             {!loading && !error && projects.length === 0 && (

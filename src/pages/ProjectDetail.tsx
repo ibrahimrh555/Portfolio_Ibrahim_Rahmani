@@ -7,6 +7,8 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { getProject, type Project } from "@/lib/api";
+import Seo from "@/components/Seo";
+import { SITE_URL } from "@/lib/seo";
 
 const ProjectDetail = () => {
   const { slug = "" } = useParams();
@@ -33,8 +35,25 @@ const ProjectDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {project && (
+        <Seo
+          title={`${project.title} | Ibrahim Rahmani`}
+          description={project.short_description || project.description.slice(0, 160)}
+          path={`/projects/${project.slug}`}
+          image={project.image_url}
+          structuredData={{
+            "@context": "https://schema.org",
+            "@type": "CreativeWork",
+            name: project.title,
+            description: project.short_description || project.description,
+            image: project.image_url,
+            url: `${SITE_URL}/projects/${project.slug}`,
+            author: { "@type": "Person", name: "Ibrahim Rahmani" },
+          }}
+        />
+      )}
       <Navigation />
-      <main className="pt-24 pb-16">
+      <main id="main-content" tabIndex={-1} className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <Button variant="ghost" className="mb-8 -ml-4 text-muted-foreground" asChild>
@@ -45,11 +64,11 @@ const ProjectDetail = () => {
             </Button>
 
             {loading && (
-              <p className="text-center text-muted-foreground">{t("projectDetail.loading")}</p>
+              <p role="status" className="text-center text-muted-foreground">{t("projectDetail.loading")}</p>
             )}
 
             {!loading && notFound && (
-              <p className="text-center text-destructive">{t("projectDetail.notFound")}</p>
+              <p role="alert" className="text-center text-destructive">{t("projectDetail.notFound")}</p>
             )}
 
             {!loading && project && (

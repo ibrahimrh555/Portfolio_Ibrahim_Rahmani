@@ -7,6 +7,8 @@ import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { formatDate, getPost, type PostDetail as PostDetailType } from "@/lib/api";
 import { useTranslation } from "react-i18next";
+import Seo from "@/components/Seo";
+import { SITE_URL } from "@/lib/seo";
 
 const PostDetail = () => {
   const { t, i18n } = useTranslation();
@@ -51,8 +53,8 @@ const PostDetail = () => {
     return (
       <div className="min-h-screen bg-[#030303] text-white">
         <Navigation />
-        <main className="pt-40 text-center">
-          <p className="text-white/40">{t("postDetail.loading")}</p>
+        <main id="main-content" tabIndex={-1} className="pt-40 text-center">
+          <p role="status" className="text-white/40">{t("postDetail.loading")}</p>
         </main>
       </div>
     );
@@ -62,7 +64,7 @@ const PostDetail = () => {
     return (
       <div className="min-h-screen bg-[#030303] text-white">
         <Navigation />
-        <main className="pt-40 text-center">
+        <main id="main-content" tabIndex={-1} className="pt-40 text-center">
           <h1 className="text-4xl font-bold mb-6">{t("postDetail.notFound")}</h1>
           <Link to="/posts" className="text-primary">{t("postDetail.back")}</Link>
         </main>
@@ -72,8 +74,26 @@ const PostDetail = () => {
 
   return (
     <div className="min-h-screen bg-[#030303] text-white selection:bg-primary/30">
+      <Seo
+        title={`${post.title} | Ibrahim Rahmani`}
+        description={post.excerpt}
+        path={`/posts/${post.slug}`}
+        image={post.cover_image_url}
+        type="article"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: post.title,
+          description: post.excerpt,
+          image: post.cover_image_url,
+          datePublished: post.published_at,
+          dateModified: post.updated_at,
+          mainEntityOfPage: `${SITE_URL}/posts/${post.slug}`,
+          author: { "@type": "Person", name: "Ibrahim Rahmani", url: SITE_URL },
+        }}
+      />
       <Navigation />
-      <main className="pt-32 pb-24">
+      <main id="main-content" tabIndex={-1} className="pt-32 pb-24">
         <article className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto mb-20">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>

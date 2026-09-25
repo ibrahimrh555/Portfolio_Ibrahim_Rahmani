@@ -53,7 +53,7 @@ const Index = () => {
       >
       <Navigation />
       
-      <main>
+      <main id="main-content" tabIndex={-1}>
         {/* --- HERO SECTION --- */}
         <section className="relative pt-32 pb-20 md:pt-24 md:pb-24 overflow-hidden bg-cover bg-center ">
         <div className="absolute top-0 left-0 w-full h-full bg-black/50 -z-10" />
@@ -159,8 +159,8 @@ const Index = () => {
               <p className="text-sm font-medium text-primary mb-2">{project.category}</p>
               <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
               <div className="flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <Button size="icon" variant="secondary" className="rounded-full w-10 h-10 hover:scale-110 transition-transform"><Star className="h-4 w-4" /></Button>
-              <Button size="icon" variant="secondary" className="rounded-full w-10 h-10 hover:scale-110 transition-transform"><ExternalLink className="h-4 w-4" /></Button>
+              <Button size="icon" variant="secondary" aria-label={`Ajouter ${project.title} aux favoris`} className="rounded-full w-10 h-10 hover:scale-110 transition-transform"><Star className="h-4 w-4" aria-hidden="true" /></Button>
+              <Button size="icon" variant="secondary" aria-label={`Ouvrir ${project.title}`} className="rounded-full w-10 h-10 hover:scale-110 transition-transform"><ExternalLink className="h-4 w-4" aria-hidden="true" /></Button>
               </div>
             </div>
             </motion.div>
@@ -340,21 +340,21 @@ const Index = () => {
             <form onSubmit={handleSubmit} className="space-y-5">
             <div className="grid md:grid-cols-2 gap-5">
               <div className="space-y-1.5">
-              <label className="text-xs font-medium text-white/40 ml-1 uppercase tracking-wider">{t("home.contact.name")}</label>
-              <Input placeholder={t("home.contact.namePlaceholder")} className="bg-transparent border-white/10 border-0 border-b rounded-none focus-visible:ring-0 focus-visible:border-primary transition-all px-0 h-9 text-sm text-white" required />
+              <label htmlFor="contact-name" className="text-xs font-medium text-white/40 ml-1 uppercase tracking-wider">{t("home.contact.name")}</label>
+              <Input id="contact-name" name="name" autoComplete="name" placeholder={t("home.contact.namePlaceholder")} className="bg-transparent border-white/10 border-0 border-b rounded-none focus-visible:ring-0 focus-visible:border-primary transition-all px-0 h-9 text-sm text-white" required />
               </div>
               <div className="space-y-1.5">
-              <label className="text-xs font-medium text-white/40 ml-1 uppercase tracking-wider">{t("home.contact.email")}</label>
-              <Input type="email" placeholder="votre@email.com" className="bg-transparent border-white/10 border-0 border-b rounded-none focus-visible:ring-0 focus-visible:border-primary transition-all px-0 h-9 text-sm text-white" required />
+              <label htmlFor="contact-email" className="text-xs font-medium text-white/40 ml-1 uppercase tracking-wider">{t("home.contact.email")}</label>
+              <Input id="contact-email" name="email" type="email" autoComplete="email" placeholder="votre@email.com" className="bg-transparent border-white/10 border-0 border-b rounded-none focus-visible:ring-0 focus-visible:border-primary transition-all px-0 h-9 text-sm text-white" required />
               </div>
             </div>
             <div className="space-y-1.5">
-              <label className="text-xs font-medium text-white/40 ml-1 uppercase tracking-wider">{t("home.contact.subject")}</label>
-              <Input placeholder={t("home.contact.subjectPlaceholder")} className="bg-transparent border-white/10 border-0 border-b rounded-none focus-visible:ring-0 focus-visible:border-primary transition-all px-0 h-9 text-sm text-white" />
+              <label htmlFor="contact-subject" className="text-xs font-medium text-white/40 ml-1 uppercase tracking-wider">{t("home.contact.subject")}</label>
+              <Input id="contact-subject" name="subject" placeholder={t("home.contact.subjectPlaceholder")} className="bg-transparent border-white/10 border-0 border-b rounded-none focus-visible:ring-0 focus-visible:border-primary transition-all px-0 h-9 text-sm text-white" />
             </div>
             <div className="space-y-1.5">
-              <label className="text-xs font-medium text-white/40 ml-1 uppercase tracking-wider">{t("home.contact.message")}</label>
-              <Textarea placeholder={t("home.contact.messagePlaceholder")} className="bg-transparent border-white/10 border-0 border-b rounded-none focus-visible:ring-0 focus-visible:border-primary transition-all px-0 min-h-[100px] text-sm text-white resize-none" required />
+              <label htmlFor="contact-message" className="text-xs font-medium text-white/40 ml-1 uppercase tracking-wider">{t("home.contact.message")}</label>
+              <Textarea id="contact-message" name="message" placeholder={t("home.contact.messagePlaceholder")} className="bg-transparent border-white/10 border-0 border-b rounded-none focus-visible:ring-0 focus-visible:border-primary transition-all px-0 min-h-[100px] text-sm text-white resize-none" required />
             </div>
             <Button type="submit" disabled={isSubmitting} className="w-full h-12 rounded-xl bg-primary text-black font-bold text-sm hover:scale-[1.02] transition-transform active:scale-95">
               {isSubmitting ? t("home.contact.sending") : t("home.contact.send")}

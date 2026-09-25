@@ -10,6 +10,8 @@ import Projects from "./pages/Projects";
 import NotFound from "./pages/NotFound";
 import PostDetail from "./pages/PostDetail";
 import ProjectDetail from "./pages/ProjectDetail";
+import RouteSeo from "@/components/RouteSeo";
+import SkipLink from "@/components/SkipLink";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +21,8 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter basename={import.meta.env.BASE_URL}>
+        <SkipLink />
+        <RouteSeo />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/posts" element={<Posts />} />
