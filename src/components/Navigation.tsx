@@ -57,6 +57,7 @@ const Navigation = () => {
               <Link
                 key={link.path}
                 to={link.path}
+                aria-current={isActive(link.path) ? "page" : undefined}
                 className={`text-sm font-medium transition-all duration-300 relative group ${
                   isActive(link.path) ? "text-primary" : "text-muted-foreground hover:text-foreground"
                 }`}
@@ -72,19 +73,28 @@ const Navigation = () => {
 
           <div className="md:hidden flex items-center gap-2">
             <LanguageSwitcher />
-            <Button variant="ghost" size="icon" className="hover:bg-primary/10" onClick={() => setIsOpen(!isOpen)} aria-label={t("navigation.menu")}>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="hover:bg-primary/10"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label={t("navigation.menu")}
+              aria-expanded={isOpen}
+              aria-controls="mobile-navigation"
+            >
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
           </div>
         </div>
 
         {isOpen && (
-          <div className="md:hidden py-4 space-y-2 animate-fade-in border-t border-border/30">
+          <div id="mobile-navigation" className="md:hidden py-4 space-y-2 animate-fade-in border-t border-border/30">
             {links.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 onClick={() => setIsOpen(false)}
+                aria-current={isActive(link.path) ? "page" : undefined}
                 className={`block py-3 px-4 text-sm font-medium rounded-lg transition-all duration-300 ${
                   isActive(link.path) ? "text-primary bg-primary/10 border border-primary/30" : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
                 }`}

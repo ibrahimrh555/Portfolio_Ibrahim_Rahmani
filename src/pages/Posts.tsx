@@ -35,7 +35,7 @@ const Posts = () => {
   return (
     <div className="min-h-screen bg-[#030303] text-white">
       <Navigation />
-      <main className="pt-32 pb-24">
+      <main id="main-content" tabIndex={-1} className="pt-32 pb-24">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="mb-20">
@@ -46,11 +46,11 @@ const Posts = () => {
             </div>
 
             {loading && (
-              <p className="text-center text-white/40">{t("posts.loading")}</p>
+              <p role="status" className="text-center text-white/40">{t("posts.loading")}</p>
             )}
 
             {error && !loading && (
-              <p className="text-center text-red-400">
+              <p role="alert" className="text-center text-red-400">
                 {t("posts.error")}
               </p>
             )}
